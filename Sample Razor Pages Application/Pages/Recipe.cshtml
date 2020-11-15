@@ -1,10 +1,10 @@
 ﻿@page "{id}"
 @model Sample_Razor_Pages_Application.Pages.RecipeModel
+@inject IRecipesService RecipesService
 @{
     ViewData["Title"] = "Recipe";
     var id = long.Parse((string)RouteData.Values["id"]);
-    var recipesService = new RecipesService();
-    var recipe = await recipesService.FindAsync(id);
+    var recipe = await RecipesService.FindAsync(id);
 
     ViewData["Title"] = recipe.Name;
 }

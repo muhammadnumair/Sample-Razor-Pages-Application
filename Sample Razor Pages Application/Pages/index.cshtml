@@ -1,12 +1,13 @@
 ﻿@page
 @model Sample_Razor_Pages_Application.Pages.indeModel
+@inject IRecipesService RecipesService
 @{
     ViewData["Title"] = "inde";
     var recipesService = new RecipesService();
-    var recipes = await recipesService.GetAllAsync();
+    var recipes = await RecipesService.GetAllAsync();
 }
 <div class="row recipes">
-    @section Title{ 
+    @section Title{
         <h2 class="Title">My Favourite Recipes</h2>
         <a asp-page="/Admin/AddEditRecipe" class="add-recipe btn btn-primary">Add Recipe</a>
     }
