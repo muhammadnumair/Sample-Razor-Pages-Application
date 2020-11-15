@@ -27,7 +27,7 @@ namespace Sample_Razor_Pages_Application
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
     }
