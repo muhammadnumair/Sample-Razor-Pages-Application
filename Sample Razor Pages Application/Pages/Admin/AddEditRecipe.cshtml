@@ -4,4 +4,34 @@
     ViewData["Title"] = Model.isNewRecipe ? "New Recipe" : "Edit Recipe";
 }
 
-<strong>Id: @Model.id</strong>
+    <form method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="recipe.Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="recipe.Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="recipe.Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea rows="3" asp-for="recipe.Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="recipe.Ingredients" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea rows="3" asp-for="recipe.Ingredients" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="recipe.Directions" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea rows="3" asp-for="recipe.Directions" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
