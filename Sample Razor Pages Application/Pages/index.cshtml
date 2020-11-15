@@ -1,7 +1,10 @@
 ﻿@page
 @model Sample_Razor_Pages_Application.Pages.indeModel
+@using Sample_Razor_Pages_Application.Models
 @{
     ViewData["Title"] = "inde";
+    var recipesService = new RecipesService();
+    var recipes = await recipesService.GetAllAsync();
 }
 
 <!DOCTYPE html>
@@ -52,12 +55,13 @@
     <div class="container">
 
         <div class="row recipes">
-            @foreach (var recipe in new[] { "Stake Studio Ki Stake", "Express Shawarma Ka Platter", "Fine Ka Burger" })
+
+            @foreach (var recipe in recipes)
             {
                 <div class="recipe col-md-4">
-                    <img class="img img-thumbnail" src="http://topsyturvycakedesign.com/img/birthday-cake-for-fido.jpg" />
-                    <h3><a href="/Recipe">@recipe</a></h3>
-                    <p>Treat your puppy to a delicious birthday treat!</p>
+                    <img class="img img-thumbnail" src="@recipe.GetInlineImageSrc()" />
+                    <h3><a href="/Recipe">@recipe.Name</a></h3>
+                    <p>@recipe.Description</p>
                 </div>
             }
         </div>
