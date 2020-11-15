@@ -1,9 +1,10 @@
-﻿@page
+﻿@page "{id}"
 @model Sample_Razor_Pages_Application.Pages.RecipeModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Sample_Razor_Pages_Application.Models
 @{
     ViewData["Title"] = "Recipe";
-    var id = 1;
+    var id =long.Parse((string)RouteData.Values["id"]);
     var recipesService = new RecipesService();
     var recipe = await recipesService.FindAsync(id);
 }
