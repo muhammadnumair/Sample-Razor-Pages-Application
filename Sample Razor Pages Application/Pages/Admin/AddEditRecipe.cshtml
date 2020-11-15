@@ -1,0 +1,7 @@
+﻿@page "{id?}"
+@model Sample_Razor_Pages_Application.Pages.Admin.AddEditRecipeModel
+@{
+    ViewData["Title"] = Model.isNewRecipe ? "New Recipe" : "Edit Recipe";
+}
+
+<strong>Id: @Model.id</strong>
