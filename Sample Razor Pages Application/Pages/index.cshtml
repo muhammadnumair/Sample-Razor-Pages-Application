@@ -9,6 +9,10 @@
     var recipes = await recipesService.GetAllAsync();
 }
 <div class="row recipes">
+    @section Title{ 
+        <h2 class="Title">My Favourite Recipes</h2>
+        <a asp-page="/Admin/AddEditRecipe" class="add-recipe btn btn-primary">Add Recipe</a>
+    }
 
     @foreach (var recipe in recipes)
     {
