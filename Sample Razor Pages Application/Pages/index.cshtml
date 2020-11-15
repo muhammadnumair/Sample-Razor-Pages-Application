@@ -1,9 +1,6 @@
 ﻿@page
 @model Sample_Razor_Pages_Application.Pages.indeModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@using Sample_Razor_Pages_Application.Models
 @{
-    Layout = "_Layout";
     ViewData["Title"] = "inde";
     var recipesService = new RecipesService();
     var recipes = await recipesService.GetAllAsync();
