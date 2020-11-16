@@ -54,6 +54,10 @@
             else
             {
                 <h2 class="title">@ViewData["Title"]</h2>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-page="/Admin/AddEditRecipe/@ViewData["Id"]" class="add-recipe btn btn-primary">Edit Recipe</a>
+                }
             }
         </div>
 
