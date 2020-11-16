@@ -4,7 +4,7 @@
     ViewData["Title"] = Model.isNewRecipe ? "New Recipe" : "Edit Recipe";
 }
 
-    <form method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group">
             <label asp-for="recipe.Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -30,8 +30,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="Image" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input type="file" asp-for="Image"/>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" class="btn btn-primary">Save</button>
+                @if (!Model.isNewRecipe)
+                {
+                    <button type="submit" asp-page-handler="Delete" class="btn btn-primary">Delete</button>
+                }
             </div>
         </div>
     </form>
