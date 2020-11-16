@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,7 @@ using Sample_Razor_Pages_Application.Models;
 
 namespace Sample_Razor_Pages_Application.Pages.Admin
 {
+    [Authorize]
     public class AddEditRecipeModel : PageModel
     {
         private IRecipesService recipesService;
@@ -36,6 +38,11 @@ namespace Sample_Razor_Pages_Application.Pages.Admin
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             recipe.Id = id.GetValueOrDefault();
             var updatedRecipe = await recipesService.FindAsync(id.GetValueOrDefault()) ?? new Recipe();
             updatedRecipe.Id = recipe.Id;
